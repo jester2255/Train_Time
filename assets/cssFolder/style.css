@@ -1,0 +1,14 @@
+body{
+	background-color: silver;
+}
+
+#bigHead{
+	background-color: blue;
+	color: white;
+	text-align: center
+}
+#theHeader{
+	border-radius: 6px; 
+	background-color: blue;
+	color: white;
+}

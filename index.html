@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Train Time</title>
+	<link rel="stylesheet" type="text/css" href="assets/cssFolder/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/cssFolder/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/cssFolder/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="assets/cssFolder/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/cssFolder/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/cssFolder/style.css">
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+</head>
+<body>
+
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+<div class="container">
+	<div class="jumbotron" id="bigHead">
+	  <h1>Train Time Table</h1>
+	  <h3>Welcome to the Crazy Train</h3>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-body" id="theHeader">
+	    	<h3 class="panel-title">Current Train Schedule</h3>
+		</div>
+
+     	<div class="panel-body">	
+			<table class="table" id="trainTable" >
+				<tr>
+				  <th class="">Train Name</th>
+				  <th class="">Destination</th>
+				  <th class="">Frequency</th>
+				  <th class="">Next Arrival</th>
+				  <th class="">Minuets Away</th>
+				</tr>
+
+<!-- On cells (`td` or `th`) -->
+				<tr id="theTable">
+				  <td class="trainName"></td>
+				  <td class="destination"></td>
+				  <td class="frequency"></td>
+				  <td class="nextArrival"></td>
+				  <td class="minAway"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+	  <div class="panel-body" id="theHeader">
+	    <h3 class="panel-title">Add Train</h3>
+	  </div>
+		 <div class="panel-body" >
+
+		    <div class="form-group">
+			    <label for="name">Train Name:</label>
+			    <input type="text" class="form-control" id="trainName" placeholder="Text Input">
+  			</div>
+
+  			<div class="form-group">
+			    <label for="role">Destination:</label>
+			    <input type="text" class="form-control" id="destination" placeholder="Text Input">
+  			</div>
+
+  			<div class="form-group">
+			    <label for="startDate">First Train Time:</label>
+			    <input type="text" class="form-control" id="firstTrain" placeholder="Text Input">
+  			</div>
+
+  			<div class="form-group">
+			    <label for="exampleInputEmail1">Frequency:</label>
+			    <input type="text" class="form-control" id="frequency" placeholder="Text Input">
+  			</div>
+
+		    <button type="button" id="submit" class="btn btn-primary">Submit</button>
+
+		 </div>
+	</div>
+	<script type="text/javascript" src="assets/javaFolder/jquery_3.2.1.min.js"></script>
+	<script type="text/javascript" src="assets/javaFolder/logic.js"></script>
+</body>
+</html>
