@@ -103,7 +103,7 @@ time actual - time of next arrival = time remaining
 
 //----------------------------------------------------------------------------------------------
 
-$("#trainTable > tbody").append("<tr><td>" + theName + "</td><td>" + theDest + "</td><td>" +
+$("#trainTable > tbody").append("<tr><td>" + theName + "</td><td>" + theDest + "</td><td>" + something + "</td><td>" +
 	beaytifyFrequency + "</td><td>" + fixArival + "</td><td>" + minAwa + "</td></tr>");
 
 
