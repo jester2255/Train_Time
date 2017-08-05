@@ -30,9 +30,9 @@ var config = {
 	theFrequency = moment($("#frequency").val().trim(), "mm").format("X");	//need time in moment.js?
 	
 	theFirstTrain = moment($("#firstTrain").val().trim(), "hh,mmA").format("X");  //need time in moment.js
-	console.log(theTrainName);
-	console.log("here is the frequency" + theFrequency)
-	console.log("here is the first Train" + theFirstTrain)
+	//console.log(theTrainName);
+	//console.log("here is the frequency" + theFrequency)
+	//console.log("here is the first Train" + theFirstTrain)
 
 
 //----------this "pushes" it to the database making a new "random" key
@@ -57,7 +57,7 @@ var config = {
  });//end of the on click function
 //--------------debugging to see if things have been added
 myDatabase.ref().on("child_added", function(childSnapshot,prevChildKey){
-	console.log(childSnapshot.val());
+//	console.log(childSnapshot.val());
 	
 	var startTime = childSnapshot.val().firstTrain
 	var theName = childSnapshot.val().trainName;
@@ -65,45 +65,63 @@ myDatabase.ref().on("child_added", function(childSnapshot,prevChildKey){
 	var theFrequ = childSnapshot.val().frequency;
 	var theNextA = "N/A"
 	var minAwa = "N/A"
-
+/*
 	console.log(theName);
 	console.log(theDest);
 	console.log(theFrequ);
 	console.log(theNextA);
 	console.log(minAwa);
-
-//----------------------------------need to do math for time here-------------------------------
-
-/*
-	If train A starts at noon (12:00pm) and has a frequency of 1 hour
-	The next train will arrive at 1:00pm
-	Start time + frequency = next arrival
 */
+//----------------------------------need to do math for time here-------------------------------
+/*
 	var currentTime = moment().format('LT');
+	var newNewTime;
+	var newtime;
 
-	theNextA = moment().add(theFrequ, 'm').add(startTime, "m");
-	console.log("here we go " + theNextA);
-	
-	var fixArival = moment.unix(theNextA).format("hh:mmA");
-	console.log("here we go again " + fixArival);
+	var a = moment([startTime]);
+	var b = moment([currentTime]);
+	var z = a.to(b); 
+	console.log("here is z " + z)
+
+	if (startTime > currentTime) {
+		newTime = moment().subtract(startTime, 'm').subtract(currentTime, 'm');
+		newNewTime = moment.unix(theNextA).format("hh:mmA");
+		console.log(newNewTime);
+	}else if (startTime < currentTime) {
+		newTime = moment().subtract(currentTime, 'm').subtract(startTime, 'm');
+		newNewTime = moment.unix(theNextA).format("hh:mmA");
+		console.log(newNewTime);
+	}
+*/
 
 	var something =	moment.unix(startTime).format("hh:mmA");
 	console.log("beautified start time " + something);
 
 	var beaytifyFrequency = moment.unix(theFrequ).format("mm");
-	//console.log("heres the beauty " + beaytifyFrequency);
-	
+	console.log("heres the beauty " + beaytifyFrequency);
+	theNextA = moment().add(beaytifyFrequency, 'm').add(something, "m");
+	console.log("the next arrival " + theNextA);
+
+	var fixArival = moment.unix(theNextA).format("hh:mmA");
+	console.log("fixed arival " + fixArival);
 
 	console.log(currentTime);
-/* time untill the the net arrival
-time actual - time of next arrival = time remaining
+
+
+/* 
+	time untill the the net arrival
+	time actual - time of next arrival = time remaining.
+
+	If train A starts at noon (12:00pm) and has a frequency of 1 hour
+	The next train will arrive at 1:00pm
+	Start time + frequency = next arrival
 */
 
 
 
 //----------------------------------------------------------------------------------------------
 
-$("#trainTable > tbody").append("<tr><td>" + theName + "</td><td>" + theDest + "</td><td>" +
+$("#trainTable > tbody").append("<tr><td>" + theName + "</td><td>" + theDest + "</td><td>" + something + "</td><td>" +
 	beaytifyFrequency + "</td><td>" + fixArival + "</td><td>" + minAwa + "</td></tr>");
 
 
